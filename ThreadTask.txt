@@ -1,0 +1,66 @@
+Single Thread Example
+A single-threaded program executes tasks one at a time sequentially.
+def print_numbers():
+    for i in range(5):
+        print(f"Number: {i}")
+def print_letters():
+    for letter in ['A', 'B', 'C', 'D', 'E']:
+        print(f"Letter: {letter}")
+# Single-threaded execution
+print_numbers()
+print_letters()
+
+print("Single-threaded execution complete!")
+
+# Multithreading
+import threading
+import time
+def print_numbers():
+    for i in range(5):
+        print(f"Number: {i}")
+        time.sleep(1)
+def print_letters():
+    for letter in ['A', 'B', 'C', 'D', 'E']:
+        print(f"Letter: {letter}")
+        time.sleep(1)
+# Creating threads
+thread1 = threading.Thread(target=print_numbers)
+thread2 = threading.Thread(target=print_letters)
+# Starting threads
+thread1.start()
+thread2.start()
+# Waiting for threads to complete
+thread1.join()
+thread2.join()
+print("Multithreaded execution complete!")
+
+Single Task Example
+A single-tasking program performs one task at a time sequentially.
+def task1():
+    for i in range(5):
+        print(f"Task 1 - Step {i}")
+# Single task execution
+task1()
+print("Single-tasking execution complete!")
+
+Multitasking Example: 
+from multiprocessing import Process
+def task1():
+    for i in range(5):
+        print(f"Task 1 - Step {i}")
+def task2():
+    for i in range(5):
+        print(f"Task 2 - Step {i}")
+task1()
+task2()
+# Creating processes
+process1 = Process(target=task1)
+process2 = Process(target=task2)
+# Starting processes
+process1.start()
+process2.start()
+# Waiting for processes to complete
+process1.join()
+process2.join()
+
+print("Multitasking execution complete!")
